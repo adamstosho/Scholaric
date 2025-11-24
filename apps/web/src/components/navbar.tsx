@@ -11,7 +11,8 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { WalletConnectButton } from "@/components/connect-button"
+import { ConnectButton } from "@/components/connect-button"
+import { Logo } from "@/components/logo"
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -35,10 +36,7 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="left" className="w-80">
               <div className="flex items-center gap-2 mb-8">
-
-                <span className="font-bold text-lg">
-                  Scholaric
-                </span>
+                <Logo showText={true} size="md" />
               </div>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
@@ -56,9 +54,7 @@ export function Navbar() {
                   </Link>
                 ))}
                 <div className="mt-6 pt-6 border-t">
-                  <Button asChild className="w-full">
-                    <WalletConnectButton />
-                  </Button>
+                  <ConnectButton />
                 </div>
               </nav>
             </SheetContent>
@@ -66,10 +62,7 @@ export function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-
-            <span className="hidden font-bold text-xl sm:inline-block">
-              Scholaric
-            </span>
+            <Logo showText={true} size="md" />
           </Link>
         </div>
         
@@ -93,7 +86,7 @@ export function Navbar() {
           ))}
           
           <div className="flex items-center gap-3">
-            <WalletConnectButton />
+            <ConnectButton />
           </div>
         </nav>
       </div>

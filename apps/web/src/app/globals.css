@@ -4,69 +4,132 @@
 
 @layer base {
   :root {
-    --border: 214.3 31.8% 91.4%;
-    --input: 216 33% 97%;
-    --ring: 215 20.2% 65.1%;
-
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Neutrals - Used for backgrounds, surfaces and text */
+    --neutral-0: #FFFFFF;
+    --neutral-50: #F6F6F6;
+    --neutral-100: #EDEDED;
+    --neutral-200: #D9D9D9;
+    --neutral-300: #BFBFBF;
+    --neutral-400: #A6A6A6;
+    --neutral-500: #8C8C8C;
+    --neutral-600: #595959;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --neutral-900: #0D0D0D;
+    
+    /* Brand Accent - Primary Colors (Indigo) */
+    --primary-50: #EEF2FF;
+    --primary-100: #E0E7FF;
+    --primary-200: #C7D2FE;
+    --primary-300: #A5B4FC;
+    --primary-400: #818CF8;
+    --primary-500: #6366F1;
+    --primary-600: #4F46E5;
+    --primary-700: #4338CA;
+    --primary-800: #3730A3;
+    --primary-900: #312E81;
+    
+    /* Semantic Colors */
+    --success: #16A34A;
+    --warning: #D97706;
+    --error: #DC2626;
+    --info: #2563EB;
+    
+    /* Text Roles */
+    --text-primary: var(--neutral-900);
+    --text-secondary: var(--neutral-600);
+    --text-muted: var(--neutral-500);
+    --text-inverse: #FFFFFF;
+    
+    /* Background Roles */
+    --bg: var(--neutral-50);
+    --surface: #FFFFFF;
+    --surface-subtle: var(--neutral-100);
+    --surface-elevated: var(--neutral-200);
+    
+    /* Design System Tokens for Components */
+    --background: var(--bg);
+    --foreground: var(--text-primary);
+    --card: var(--surface);
+    --card-foreground: var(--text-primary);
+    --popover: var(--surface);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--primary-500);
+    --primary-foreground: var(--text-inverse);
+    --secondary: var(--neutral-200);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--surface-subtle);
+    --muted-foreground: var(--text-secondary);
+    --accent: var(--primary-100);
+    --accent-foreground: var(--primary-900);
+    --destructive: var(--error);
+    --destructive-foreground: var(--text-inverse);
+    --border: var(--neutral-200);
+    --input: var(--neutral-200);
+    --ring: var(--primary-500);
+    
+    /* Typography - Font Family */
+    --font-sans: var(--font-inter), "Inter var", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    
+    /* Typography - Semantic Type Tokens (using clamp for responsive) */
+    --type-display: clamp(3rem, 2rem + 5vw, 4.5rem);
+    --type-h1: clamp(2.5rem, 2rem + 4vw, 3.75rem);
+    --type-h2: clamp(2rem, 1.5rem + 3vw, 3rem);
+    --type-h3: clamp(1.75rem, 1.25rem + 2.5vw, 2.5rem);
+    --type-h4: clamp(1.5rem, 1.125rem + 2vw, 2.125rem);
+    --type-h5: clamp(1.25rem, 1rem + 1.5vw, 1.75rem);
+    --type-h6: clamp(1.125rem, 0.875rem + 1vw, 1.5rem);
+    --type-subtitle: clamp(1rem, 0.875rem + 0.75vw, 1.25rem);
+    --type-body: clamp(0.875rem, 0.9rem + 0.2vw, 1.125rem);
+    --type-body-large: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+    --type-caption: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+    
+    /* Typography - Line Heights */
+    --lh-heading: 1.15;
+    --lh-body: 1.6;
+    
+    /* Typography - Letter Spacing */
+    --ls-body: 0;
+    --ls-heading: -0.02em;
+    --ls-uppercase: 0.03em;
+    
+    /* Border Radius */
+    --radius-sm: 0.125rem;
+    --radius: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
+    --radius-full: 9999px;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* Dark Mode - Inverted Neutrals */
+    --background: var(--neutral-900);
+    --foreground: var(--text-inverse);
+    --card: var(--neutral-800);
+    --card-foreground: var(--text-inverse);
+    --popover: var(--neutral-800);
+    --popover-foreground: var(--text-inverse);
+    --primary: var(--primary-500);
+    --primary-foreground: var(--text-inverse);
+    --secondary: var(--neutral-700);
+    --secondary-foreground: var(--text-inverse);
+    --muted: var(--neutral-800);
+    --muted-foreground: var(--neutral-400);
+    --accent: var(--neutral-700);
+    --accent-foreground: var(--text-inverse);
+    --destructive: var(--error);
+    --destructive-foreground: var(--text-inverse);
+    --border: var(--neutral-700);
+    --input: var(--neutral-700);
+    --ring: var(--primary-400);
+    
+    /* Text Roles for Dark Mode */
+    --text-primary: var(--text-inverse);
+    --text-secondary: var(--neutral-400);
+    --text-muted: var(--neutral-500);
   }
 }
 
@@ -74,7 +137,930 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+    line-height: var(--lh-body);
+    letter-spacing: var(--ls-body);
+    overflow-x: hidden;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  a, button, input, textarea, select {
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Better focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+  }
+  
+  /* Typography - Semantic Headings */
+  h1 {
+    font-size: var(--type-h1);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-heading);
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-size: var(--type-h2);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-heading);
+    font-weight: 700;
+  }
+  
+  h3 {
+    font-size: var(--type-h3);
+    line-height: 1.2;
+    letter-spacing: var(--ls-heading);
+    font-weight: 600;
+  }
+  
+  h4 {
+    font-size: var(--type-h4);
+    line-height: 1.25;
+    letter-spacing: var(--ls-heading);
+    font-weight: 600;
+  }
+  
+  h5 {
+    font-size: var(--type-h5);
+    line-height: 1.3;
+    letter-spacing: var(--ls-heading);
+    font-weight: 600;
+  }
+  
+  h6 {
+    font-size: var(--type-h6);
+    line-height: 1.3;
+    letter-spacing: var(--ls-heading);
+    font-weight: 600;
+  }
+  
+  p {
+    font-size: var(--type-body);
+    line-height: var(--lh-body);
+    letter-spacing: var(--ls-body);
+  }
+  
+  /* Utility classes for semantic text sizes */
+  .text-display {
+    font-size: var(--type-display);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-heading);
+    font-weight: 700;
+  }
+  
+  .text-subtitle {
+    font-size: var(--type-subtitle);
+    line-height: var(--lh-body);
+    letter-spacing: var(--ls-body);
+  }
+  
+  .text-body-large {
+    font-size: var(--type-body-large);
+    line-height: var(--lh-body);
+    letter-spacing: var(--ls-body);
+  }
+  
+  .text-caption {
+    font-size: var(--type-caption);
+    line-height: 1.5;
+    letter-spacing: var(--ls-body);
+  }
+  
+  /* Uppercase text */
+  .uppercase {
+    letter-spacing: var(--ls-uppercase);
+  }
+}
+
+/* Enhanced utility classes */
+@layer utilities {
+  /* Shadow effects */
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  
+  .shadow-elevation-1 {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .shadow-elevation-2 {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+  }
+  
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Animated gradient text */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+  }
+  
+  .dark .glass {
+    background: rgba(13, 13, 13, 0.6);
+  }
+  
+  /* Skeleton loader */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--neutral-200) 25%,
+      var(--neutral-100) 50%,
+      var(--neutral-200) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+  
+  .dark .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--neutral-800) 25%,
+      var(--neutral-700) 50%,
+      var(--neutral-800) 75%
+    );
+    background-size: 200% 100%;
+  }
+  
+  @keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* Hover lift effect */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Focus ring */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+  
+  /* Text balance for better line breaks */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Animation keyframes */
+@layer utilities {
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    50% { box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.18); }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Fade in animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in-delay-1 {
+    animation: fadeIn 0.5s ease-out 0.1s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fadeIn 0.5s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-3 {
+    animation: fadeIn 0.5s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  /* Slide in from bottom */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-in-up {
+    animation: slideInUp 0.4s ease-out forwards;
+  }
+
+  /* Scale in animation */
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  /* Stagger children animation */
+  .stagger-children > * {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+  .stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+
+  /* Smooth hover transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Button press effect */
+  .btn-press:active {
+    transform: scale(0.98);
+  }
+
+  /* Loading spinner */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin 2s linear infinite;
+  }
+
+  /* Shimmer effect for loading */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(
+      to right,
+      var(--neutral-200) 0%,
+      var(--neutral-100) 50%,
+      var(--neutral-200) 100%
+    );
+    background-size: 1000px 100%;
+  }
+
+  /* Responsive container padding */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Better mobile touch targets */
+  @media (max-width: 768px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Hero Section Motion Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+
+  @keyframes floatReverse {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(20px) rotate(-5deg);
+    }
+  }
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg) translateX(100px) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(100px) rotate(-360deg);
+    }
+  }
+
+  @keyframes orbitReverse {
+    0% {
+      transform: rotate(360deg) translateX(80px) rotate(-360deg);
+    }
+    100% {
+      transform: rotate(0deg) translateX(80px) rotate(0deg);
+    }
+  }
+
+  @keyframes pulse-glow-large {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes drift {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(30px, -30px) rotate(120deg);
+    }
+    66% {
+      transform: translate(-20px, 20px) rotate(240deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+
+  @keyframes shimmer-move {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-reverse {
+    animation: floatReverse 8s ease-in-out infinite;
+  }
+
+  .animate-orbit {
+    animation: orbit 20s linear infinite;
+  }
+
+  .animate-orbit-reverse {
+    animation: orbitReverse 25s linear infinite;
+  }
+
+  .animate-pulse-glow-large {
+    animation: pulse-glow-large 3s ease-in-out infinite;
+  }
+
+  .animate-drift {
+    animation: drift 15s ease-in-out infinite;
+  }
+
+  .animate-shimmer-move {
+    animation: shimmer-move 3s linear infinite;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(99, 102, 241, 0.3),
+      transparent
+    );
+    background-size: 200% 100%;
+  }
+}
+
+/* RainbowKit Customization - Match Design System */
+@layer components {
+  /* Connect Button Styling */
+  [data-rk] {
+    --rk-font-family: var(--font-sans);
+    --rk-border-radius: var(--radius-md);
+  }
+
+  /* Shimmer animation keyframes for connect button */
+  @keyframes shimmer-connect {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes pulse-glow-connect {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4),
+                  0 4px 14px rgba(99, 102, 241, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(99, 102, 241, 0),
+                  0 8px 24px rgba(99, 102, 241, 0.35);
+    }
+  }
+
+  @keyframes button-enter {
+    0% {
+      opacity: 0;
+      transform: translateY(4px) scale(0.96);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Underline animation keyframes */
+  @keyframes underline-expand {
+    0% {
+      width: 0;
+      left: 50%;
+    }
+    100% {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  @keyframes underline-shrink {
+    0% {
+      width: 100%;
+      left: 0;
+    }
+    100% {
+      width: 0;
+      left: 50%;
+    }
+  }
+
+  /* Main Connect Button - Link style with smooth color transitions */
+  button[data-testid="rk-connect-button"] {
+    position: relative !important;
+    background: transparent !important;
+    color: var(--primary-500) !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    font-family: var(--font-sans) !important;
+    font-size: var(--type-body) !important;
+    font-weight: 600 !important;
+    padding: 0.625rem 1.25rem !important;
+    height: auto !important;
+    min-height: 2.75rem !important;
+    cursor: pointer !important;
+    overflow: visible !important;
+    text-decoration: none !important;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    animation: button-enter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    will-change: color, transform !important;
+  }
+
+  /* Animated underline effect */
+  button[data-testid="rk-connect-button"]::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0.25rem !important;
+    left: 50% !important;
+    width: 0 !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, var(--primary-500), var(--primary-600)) !important;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                left 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    pointer-events: none !important;
+    border-radius: 2px !important;
+  }
+
+  /* Hover state with smooth color transition and underline expansion */
+  button[data-testid="rk-connect-button"]:hover {
+    color: var(--primary-600) !important;
+    background: rgba(99, 102, 241, 0.05) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* Underline expands on hover */
+  button[data-testid="rk-connect-button"]:hover::after {
+    width: 100% !important;
+    left: 0 !important;
+    background: linear-gradient(90deg, var(--primary-600), var(--primary-700)) !important;
+    height: 2.5px !important;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4) !important;
+  }
+
+  /* Active/pressed state with smooth transition */
+  button[data-testid="rk-connect-button"]:active {
+    color: var(--primary-700) !important;
+    transform: translateY(0) !important;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  button[data-testid="rk-connect-button"]:active::after {
+    background: linear-gradient(90deg, var(--primary-700), var(--primary-800)) !important;
+  }
+
+  /* Focus state for accessibility with smooth transitions */
+  button[data-testid="rk-connect-button"]:focus-visible {
+    outline: 2px solid var(--ring) !important;
+    outline-offset: 4px !important;
+    color: var(--primary-600) !important;
+    background: rgba(99, 102, 241, 0.08) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  button[data-testid="rk-connect-button"]:focus-visible::after {
+    width: 100% !important;
+    left: 0 !important;
+    background: linear-gradient(90deg, var(--primary-600), var(--primary-700)) !important;
+  }
+
+  /* Connected State Button - Link style with smooth transitions */
+  button[data-testid="rk-connect-button"][aria-expanded="true"],
+  button[data-testid="rk-connect-button"][aria-expanded="false"]:has(+ div) {
+    background: transparent !important;
+    color: var(--foreground) !important;
+    border: none !important;
+    box-shadow: none !important;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  button[data-testid="rk-connect-button"][aria-expanded="true"]::after,
+  button[data-testid="rk-connect-button"][aria-expanded="false"]:has(+ div)::after {
+    background: linear-gradient(90deg, var(--primary-400), var(--primary-500)) !important;
+    width: 0 !important;
+    left: 50% !important;
+  }
+
+  button[data-testid="rk-connect-button"][aria-expanded="true"]:hover,
+  button[data-testid="rk-connect-button"][aria-expanded="false"]:has(+ div):hover {
+    background: rgba(99, 102, 241, 0.05) !important;
+    color: var(--primary-600) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  button[data-testid="rk-connect-button"][aria-expanded="true"]:hover::after,
+  button[data-testid="rk-connect-button"][aria-expanded="false"]:has(+ div):hover::after {
+    width: 100% !important;
+    left: 0 !important;
+    background: linear-gradient(90deg, var(--primary-500), var(--primary-600)) !important;
+  }
+
+  button[data-testid="rk-connect-button"][aria-expanded="true"]:active,
+  button[data-testid="rk-connect-button"][aria-expanded="false"]:has(+ div):active {
+    transform: translateY(0) !important;
+    color: var(--primary-700) !important;
+  }
+
+  /* Account Button Text with smooth color transitions */
+  button[data-testid="rk-connect-button"] > div {
+    color: inherit !important;
+    font-family: var(--font-sans) !important;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Chain Status Icon with smooth color transitions */
+  button[data-testid="rk-connect-button"] svg {
+    color: inherit !important;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  button[data-testid="rk-connect-button"]:hover svg {
+    transform: scale(1.05) !important;
+  }
+
+  /* Dropdown Menu */
+  div[data-rk] > div[role="menu"] {
+    background: var(--popover) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-elevation-2) !important;
+    padding: 0.5rem !important;
+    font-family: var(--font-sans) !important;
+    min-width: 200px !important;
+  }
+
+  /* Menu Items */
+  div[data-rk] > div[role="menu"] button,
+  div[data-rk] > div[role="menu"] a {
+    color: var(--foreground) !important;
+    font-family: var(--font-sans) !important;
+    font-size: var(--type-body) !important;
+    padding: 0.625rem 0.75rem !important;
+    border-radius: var(--radius) !important;
+    transition: all 0.15s ease !important;
+  }
+
+  div[data-rk] > div[role="menu"] button:hover,
+  div[data-rk] > div[role="menu"] a:hover {
+    background: var(--muted) !important;
+    color: var(--foreground) !important;
+  }
+
+  /* Account Info in Dropdown */
+  div[data-rk] > div[role="menu"] > div:first-child {
+    padding: 0.75rem !important;
+    border-bottom: 1px solid var(--border) !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  div[data-rk] > div[role="menu"] > div:first-child > div {
+    color: var(--foreground) !important;
+    font-family: var(--font-sans) !important;
+    font-size: var(--type-body) !important;
+  }
+
+  /* Disconnect Button */
+  div[data-rk] > div[role="menu"] button[data-testid="rk-disconnect-button"] {
+    color: var(--destructive) !important;
+  }
+
+  div[data-rk] > div[role="menu"] button[data-testid="rk-disconnect-button"]:hover {
+    background: rgba(220, 38, 38, 0.1) !important;
+    color: var(--destructive) !important;
+  }
+
+  /* Modal/Dialog */
+  div[data-rk] > div[role="dialog"] {
+    background: var(--popover) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-xl) !important;
+    box-shadow: var(--shadow-elevation-2) !important;
+    font-family: var(--font-sans) !important;
+  }
+
+  /* Wallet Options in Modal - Enhanced with animations */
+  div[data-rk] > div[role="dialog"] button {
+    position: relative !important;
+    background: var(--surface) !important;
+    border: 1.5px solid var(--border) !important;
+    border-radius: var(--radius-lg) !important;
+    color: var(--foreground) !important;
+    font-family: var(--font-sans) !important;
+    padding: 0.875rem 1.125rem !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+  }
+
+  div[data-rk] > div[role="dialog"] button::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(99, 102, 241, 0.1),
+      transparent
+    ) !important;
+    transition: left 0.5s ease !important;
+    pointer-events: none !important;
+  }
+
+  div[data-rk] > div[role="dialog"] button:hover {
+    background: var(--muted) !important;
+    border-color: var(--primary-400) !important;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.2),
+                0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  div[data-rk] > div[role="dialog"] button:hover::before {
+    left: 100% !important;
+  }
+
+  div[data-rk] > div[role="dialog"] button:active {
+    transform: translateY(0) scale(0.98) !important;
+  }
+
+  /* Chain Selector */
+  div[data-rk] button[data-testid="rk-chain-button"] {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    color: var(--foreground) !important;
+    font-family: var(--font-sans) !important;
+  }
+
+  div[data-rk] button[data-testid="rk-chain-button"]:hover {
+    background: var(--muted) !important;
+    border-color: var(--primary-300) !important;
+  }
+
+  /* Loading State with smooth color pulsing */
+  @keyframes color-pulse {
+    0%, 100% {
+      color: var(--primary-500);
+    }
+    50% {
+      color: var(--primary-400);
+    }
+  }
+
+  button[data-testid="rk-connect-button"]:disabled {
+    opacity: 0.7 !important;
+    cursor: not-allowed !important;
+    animation: color-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+  }
+
+  /* Loading spinner animation */
+  @keyframes spin-smooth {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  button[data-testid="rk-connect-button"]:disabled svg {
+    animation: spin-smooth 1s linear infinite !important;
+    transition: color 0.3s ease !important;
+  }
+
+  button[data-testid="rk-connect-button"]:disabled::after {
+    background: linear-gradient(90deg, var(--primary-400), var(--primary-500)) !important;
+    animation: color-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+  }
+
+  /* Account Address Display with smooth color transitions */
+  button[data-testid="rk-connect-button"] > div > div {
+    font-family: var(--font-mono, var(--font-sans)) !important;
+    font-size: var(--type-body) !important;
+    color: inherit !important;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Enhanced wrapper for connect button */
+  .rk-connect-button-wrapper {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    animation: button-enter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  }
+
+  /* Responsive adjustments for mobile */
+  @media (max-width: 640px) {
+    button[data-testid="rk-connect-button"] {
+      padding: 0.75rem 1.125rem !important;
+      min-height: 3rem !important;
+      font-size: var(--type-body) !important;
+    }
+
+    button[data-testid="rk-connect-button"]::after {
+      bottom: 0.125rem !important;
+      height: 2px !important;
+    }
+
+    button[data-testid="rk-connect-button"]:hover::after {
+      height: 2.5px !important;
+    }
+  }
+
+  /* Dark mode specific enhancements with smooth transitions */
+  .dark button[data-testid="rk-connect-button"] {
+    color: var(--primary-400) !important;
+  }
+
+  .dark button[data-testid="rk-connect-button"]:hover {
+    color: var(--primary-300) !important;
+    background: rgba(99, 102, 241, 0.1) !important;
+  }
+
+  .dark button[data-testid="rk-connect-button"]:hover::after {
+    box-shadow: 0 2px 12px rgba(99, 102, 241, 0.5) !important;
+  }
+
+  .dark button[data-testid="rk-connect-button"]::after {
+    background: linear-gradient(90deg, var(--primary-400), var(--primary-500)) !important;
+  }
+
+  .dark button[data-testid="rk-connect-button"]:hover::after {
+    background: linear-gradient(90deg, var(--primary-300), var(--primary-400)) !important;
+  }
+
+  /* Accessibility: Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    button[data-testid="rk-connect-button"],
+    .rk-connect-button-wrapper,
+    button[data-testid="rk-connect-button"]::after,
+    div[data-rk] > div[role="dialog"] button::before {
+      animation: none !important;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+    }
+
+    button[data-testid="rk-connect-button"]:hover {
+      transform: none !important;
+      animation: none !important;
+    }
+
+    button[data-testid="rk-connect-button"]:hover::after {
+      transition: width 0.2s ease, left 0.2s ease, background 0.2s ease !important;
+    }
+
+    button[data-testid="rk-connect-button"]:disabled {
+      animation: none !important;
+    }
+
+    button[data-testid="rk-connect-button"]:disabled svg {
+      animation: none !important;
+    }
+
+    button[data-testid="rk-connect-button"]:disabled::after {
+      animation: none !important;
+    }
   }
 }

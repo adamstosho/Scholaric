@@ -1,0 +1,10 @@
+{
+  "network": "sepolia",
+  "chainId": 11142220,
+  "contractName": "QuizManager",
+  "contractAddress": "0xc9E6c6990BD99Af280641f659e6543ae9577409c",
+  "deployer": "0x1A0A85fd9E79562e85A0861c509E0c2239a6d0D5",
+  "timestamp": "2025-11-20T14:59:00.049Z",
+  "blockNumber": 10366749,
+  "explorer": "https://celo-sepolia.blockscout.com/address/0xc9E6c6990BD99Af280641f659e6543ae9577409c"
+}

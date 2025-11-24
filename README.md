@@ -51,9 +51,33 @@ This is a monorepo managed by Turborepo with the following structure:
 - **Monorepo**: Turborepo
 - **Package Manager**: PNPM
 
+## Deployment
+
+### Vercel Deployment
+
+This project is configured for deployment on Vercel:
+
+1. **Connect your repository** to Vercel
+2. **Set environment variables** in Vercel dashboard:
+   - `NEXT_PUBLIC_QUIZ_MANAGER_ADDRESS` - Your deployed contract address
+   - `NEXT_PUBLIC_CHAIN_ID` - Chain ID (e.g., 11142220 for Celo Sepolia)
+   - `NEXT_PUBLIC_WEB3_STORAGE_TOKEN` - IPFS storage token (from Web3.Storage)
+   - `NEXT_PUBLIC_WC_PROJECT_ID` - WalletConnect Project ID (optional)
+   - `NEXT_PUBLIC_IPFS_GATEWAY` - IPFS gateway URL
+3. **Deploy** - Vercel will automatically detect the Next.js app in `apps/web`
+
+### Environment Variables
+
+See `.env.example` files in:
+- `apps/web/.env.example` - Frontend environment variables
+- `apps/contracts/.env.example` - Contract deployment variables
+
+**⚠️ Important:** Never commit `.env` or `.env.local` files with real secrets!
+
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Celo Documentation](https://docs.celo.org/)
 - [Turborepo Documentation](https://turbo.build/repo/docs)
 - [shadcn/ui Documentation](https://ui.shadcn.com/)
+- [Vercel Deployment Guide](https://vercel.com/docs)
