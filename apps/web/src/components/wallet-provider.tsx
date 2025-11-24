@@ -17,7 +17,7 @@ const connectors = connectorsForWallets(
     },
   ],
   {
-    appName: "CeloScholar",
+    appName: "Scholaric",
     projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID || "celo-scholar-app",
   }
 );
@@ -97,7 +97,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         <RainbowKitProvider
           initialChain={celoSepolia}
           appInfo={{
-            appName: "CeloScholar",
+            appName: "Scholaric",
             learnMoreUrl: "https://docs.celo.org",
           }}
           modalSize="compact"

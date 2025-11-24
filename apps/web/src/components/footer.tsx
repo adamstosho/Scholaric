@@ -100,7 +100,7 @@ export function Footer() {
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-border">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              &copy; 2025 CeloScholar. All rights reserved.
+              &copy; 2025 Scholaric. All rights reserved.
             </p>
             <div className="flex gap-4 sm:gap-6">
               <Link href="#" className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors">

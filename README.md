@@ -1,83 +1,544 @@
 # Scholaric
 
-Education Project
+**Learn & Earn with Blockchain-Powered Education**
 
-A modern Celo blockchain application built with Next.js, TypeScript, and Turborepo.
+Scholaric is a decentralized educational platform built on the Celo blockchain that rewards learners with cUSD (Celo Dollars) for answering quiz questions correctly. Create educational quizzes, fund prize pools, and earn real cryptocurrency rewards while learning.
 
-## Getting Started
+Built for the **Celo MiniPay Hackathon** - Educational Games category.
 
-1. Install dependencies:
+---
+
+## 📖 Table of Contents
+
+- [Introduction](#introduction)
+- [Problem Statement](#problem-statement)
+- [Solution](#solution)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [How to Use](#how-to-use)
+- [Project Structure](#project-structure)
+- [Smart Contracts](#smart-contracts)
+- [Environment Variables](#environment-variables)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## 🎯 Introduction
+
+Scholaric is a learn-to-earn platform that combines education with blockchain technology. Students can participate in quizzes on various subjects, answer questions correctly, and earn cUSD rewards. Teachers and content creators can create quizzes, fund prize pools, and build engaging educational experiences.
+
+The platform uses smart contracts on the Celo blockchain to ensure transparent, fair, and secure reward distribution. All quiz data is stored on IPFS (InterPlanetary File System) for decentralization and permanence.
+
+---
+
+## 🔍 Problem Statement
+
+Traditional education platforms face several challenges:
+
+1. **Lack of Motivation**: Students often lack financial incentives to engage with educational content
+2. **Limited Accessibility**: Quality education is expensive and not accessible to everyone
+3. **No Transparency**: Reward systems in traditional platforms are often opaque
+4. **High Transaction Costs**: Traditional payment systems charge high fees for small transactions
+5. **Geographic Barriers**: Students in developing regions face currency and payment barriers
+
+---
+
+## 💡 Solution
+
+Scholaric solves these problems by:
+
+- **Blockchain Rewards**: Students earn cUSD (stable cryptocurrency) for correct answers, providing real financial motivation
+- **Transparent System**: All quiz results and rewards are recorded on the blockchain, ensuring fairness
+- **Low-Cost Transactions**: Built on Celo blockchain with MiniPay support for gas-free transactions
+- **Global Access**: Anyone with a crypto wallet can participate, regardless of location
+- **Decentralized Storage**: Quiz content stored on IPFS ensures permanence and accessibility
+- **Fair Distribution**: Smart contracts automatically distribute rewards based on performance
+
+---
+
+## ✨ Key Features
+
+### For Learners
+
+1. **Browse Quizzes**: Explore a catalogue of educational quizzes on various subjects
+2. **Join Quizzes**: Participate in active quizzes by connecting your wallet
+3. **Answer Questions**: Submit answers using a secure commit-reveal pattern
+4. **Earn Rewards**: Receive cUSD rewards based on your quiz performance
+5. **View Leaderboards**: See how you rank compared to other participants
+6. **Track Rewards**: Monitor your earnings and reward history
+
+### For Creators
+
+1. **Create Quizzes**: Build custom quizzes with multiple-choice, true/false, or short-answer questions
+2. **Fund Prize Pools**: Add cUSD to quiz prize pools to incentivize participation
+3. **Manage Quizzes**: Set quiz duration, maximum participants, and start times
+4. **View Analytics**: Track quiz participation and performance metrics
+
+### Platform Features
+
+1. **Secure Commit-Reveal**: Answers are committed as hashes first, then revealed after the quiz ends, preventing cheating
+2. **Proportional Rewards**: Rewards are distributed proportionally based on scores
+3. **IPFS Storage**: Quiz metadata stored on decentralized IPFS network
+4. **MiniPay Integration**: Seamless wallet connection with MiniPay support
+5. **Mobile-First Design**: Responsive design optimized for mobile devices
+6. **Real-Time Updates**: Live updates on quiz status and participant counts
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui (Radix UI)
+- **State Management**: React Query (TanStack Query)
+- **Blockchain Integration**: 
+  - Wagmi v2
+  - Viem v2
+  - RainbowKit
+- **Form Handling**: React Hook Form with Zod validation
+- **Icons**: Lucide React
+
+### Backend & Blockchain
+
+- **Blockchain**: Celo Network (Sepolia Testnet)
+- **Smart Contracts**: Solidity 0.8.20
+- **Development Framework**: Hardhat
+- **Testing**: Hardhat Test Suite
+- **Storage**: IPFS (via Pinata/Web3.Storage)
+
+### Infrastructure
+
+- **Monorepo**: Turborepo
+- **Package Manager**: pnpm
+- **Deployment**: Vercel (Frontend)
+- **Version Control**: Git
+
+### Key Libraries
+
+- **Blockchain**: `wagmi`, `viem`, `@rainbow-me/rainbowkit`
+- **Forms**: `react-hook-form`, `@hookform/resolvers`, `zod`
+- **UI**: `@radix-ui/*`, `tailwindcss`, `lucide-react`
+- **Utilities**: `date-fns`, `clsx`, `tailwind-merge`
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- **Node.js**: Version 18.0.0 or higher
+- **pnpm**: Version 8.0.0 or higher
+- **Git**: For version control
+- **Crypto Wallet**: MetaMask, WalletConnect, or MiniPay
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/adamstosho/Scholaric.git
+   cd Scholaric
+   ```
+
+2. **Install dependencies**
+
    ```bash
    pnpm install
    ```
 
-2. Start the development server:
+3. **Set up environment variables**
+
+   Create a `.env.local` file in the `apps/web` directory:
+
    ```bash
+   cd apps/web
+   cp .env.example .env.local
+   ```
+
+   Fill in the required environment variables (see [Environment Variables](#environment-variables) section).
+
+4. **Start the development server**
+
+   ```bash
+   # From the root directory
    pnpm dev
    ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+   The app will be available at `http://localhost:3000`
 
-## Project Structure
+### Smart Contracts Setup
 
-This is a monorepo managed by Turborepo with the following structure:
+1. **Navigate to contracts directory**
 
-- `apps/web` - Next.js application with embedded UI components and utilities
-- `apps/hardhat` - Smart contract development environment
+   ```bash
+   cd apps/contracts
+   ```
 
-## Available Scripts
+2. **Set up environment variables**
 
-- `pnpm dev` - Start development servers
-- `pnpm build` - Build all packages and apps
-- `pnpm lint` - Lint all packages and apps
-- `pnpm type-check` - Run TypeScript type checking
+   Create a `.env` file:
 
-### Smart Contract Scripts
+   ```bash
+   PRIVATE_KEY=your_private_key_here
+   CELOSCAN_API_KEY=your_celoscan_api_key (optional)
+   ```
 
-- `pnpm contracts:compile` - Compile smart contracts
-- `pnpm contracts:test` - Run smart contract tests
-- `pnpm contracts:deploy` - Deploy contracts to local network
-- `pnpm contracts:deploy:alfajores` - Deploy to Celo Alfajores testnet
-- `pnpm contracts:deploy:sepolia` - Deploy to Celo Sepolia testnet
-- `pnpm contracts:deploy:celo` - Deploy to Celo mainnet
+3. **Compile contracts**
 
-## Tech Stack
+   ```bash
+   pnpm compile
+   ```
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Smart Contracts**: Hardhat with Viem
-- **Monorepo**: Turborepo
-- **Package Manager**: PNPM
+4. **Run tests**
 
-## Deployment
+   ```bash
+   pnpm test
+   ```
 
-### Vercel Deployment
+5. **Deploy to testnet** (optional)
 
-This project is configured for deployment on Vercel:
+   ```bash
+   pnpm deploy:sepolia
+   ```
 
-1. **Connect your repository** to Vercel
-2. **Set environment variables** in Vercel dashboard:
-   - `NEXT_PUBLIC_QUIZ_MANAGER_ADDRESS` - Your deployed contract address
-   - `NEXT_PUBLIC_CHAIN_ID` - Chain ID (e.g., 11142220 for Celo Sepolia)
-   - `NEXT_PUBLIC_WEB3_STORAGE_TOKEN` - IPFS storage token (from Web3.Storage)
-   - `NEXT_PUBLIC_WC_PROJECT_ID` - WalletConnect Project ID (optional)
-   - `NEXT_PUBLIC_IPFS_GATEWAY` - IPFS gateway URL
-3. **Deploy** - Vercel will automatically detect the Next.js app in `apps/web`
+---
 
-### Environment Variables
+## 📱 How to Use
 
-See `.env.example` files in:
-- `apps/web/.env.example` - Frontend environment variables
-- `apps/contracts/.env.example` - Contract deployment variables
+### For First-Time Users
 
-**⚠️ Important:** Never commit `.env` or `.env.local` files with real secrets!
+1. **Connect Your Wallet**
+   - Click the "Connect Wallet" button on the homepage
+   - Choose your wallet (MetaMask, WalletConnect, or MiniPay)
+   - Approve the connection request
+   - You'll be redirected to your dashboard
 
-## Learn More
+2. **Browse Available Quizzes**
+   - Click "Catalogue" in the navigation menu
+   - Browse through available quizzes
+   - Each quiz shows:
+     - Subject and difficulty level
+     - Prize pool amount
+     - Number of participants
+     - Start time and duration
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Celo Documentation](https://docs.celo.org/)
-- [Turborepo Documentation](https://turbo.build/repo/docs)
-- [shadcn/ui Documentation](https://ui.shadcn.com/)
-- [Vercel Deployment Guide](https://vercel.com/docs)
+3. **Join a Quiz**
+   - Click on a quiz you want to join
+   - Review the quiz details
+   - Click "Join Quiz" button
+   - Confirm the transaction in your wallet
+   - Wait for the quiz to start
+
+4. **Take the Quiz**
+   - Once the quiz starts, you'll see the questions
+   - Select your answers for each question
+   - Click "Commit Answers" to submit (answers are hashed for security)
+   - Wait for the quiz to end
+
+5. **Reveal Your Answers**
+   - After the quiz ends, click "Reveal Answers"
+   - Your score will be calculated automatically
+   - Rewards will be distributed based on your performance
+
+6. **Claim Your Rewards**
+   - Go to the "Rewards" page
+   - View your earned rewards
+   - Click "Claim" to receive cUSD in your wallet
+
+### For Quiz Creators
+
+1. **Create a New Quiz**
+   - Click "Create Quiz" in the navigation menu
+   - Fill in the quiz details:
+     - Title and description
+     - Subject and difficulty
+     - Grade level
+     - Start time and duration
+     - Maximum number of participants
+   - Add questions:
+     - Question text
+     - Answer options (for multiple choice)
+     - Correct answer
+   - Click "Create Quiz"
+   - Confirm the transaction
+
+2. **Fund the Prize Pool**
+   - After creating a quiz, you can add funds to the prize pool
+   - Click "Fund Quiz" on the quiz page
+   - Enter the amount of cUSD you want to add
+   - Confirm the transaction
+   - The prize pool will be updated
+
+3. **Manage Your Quiz**
+   - View quiz statistics on your dashboard
+   - Monitor participant count
+   - End the quiz early if needed (only creator can do this)
+
+### Navigation Guide
+
+- **Home**: Landing page with features and information
+- **Catalogue**: Browse all available quizzes
+- **Dashboard**: Your personal dashboard with quiz history
+- **Create**: Create a new quiz
+- **Leaderboard**: View top performers across all quizzes
+- **Rewards**: View and claim your earned rewards
+
+---
+
+## 📁 Project Structure
+
+```
+Scholaric/
+├── apps/
+│   ├── web/                 # Next.js frontend application
+│   │   ├── src/
+│   │   │   ├── app/         # Next.js app router pages
+│   │   │   │   ├── catalogue/    # Quiz catalogue page
+│   │   │   │   ├── create/       # Quiz creation page
+│   │   │   │   ├── dashboard/    # User dashboard
+│   │   │   │   ├── leaderboard/  # Leaderboard page
+│   │   │   │   ├── quiz/        # Quiz pages (join, session, results)
+│   │   │   │   └── rewards/     # Rewards page
+│   │   │   ├── components/      # React components
+│   │   │   ├── hooks/           # Custom React hooks
+│   │   │   ├── lib/             # Utility functions and contracts
+│   │   │   └── styles/          # Global styles
+│   │   ├── public/              # Static assets
+│   │   └── package.json
+│   │
+│   └── contracts/          # Smart contracts
+│       ├── contracts/       # Solidity contract files
+│       │   └── QuizManager.sol
+│       ├── test/           # Contract tests
+│       ├── scripts/        # Deployment scripts
+│       └── hardhat.config.ts
+│
+├── package.json            # Root package.json
+├── turbo.json             # Turborepo configuration
+└── README.md              # This file
+```
+
+---
+
+## 🔐 Smart Contracts
+
+### QuizManager Contract
+
+The main smart contract that handles all quiz operations.
+
+**Key Functions:**
+
+- `createQuiz()`: Create a new quiz with metadata
+- `fundQuiz()`: Add funds to a quiz prize pool
+- `joinQuiz()`: Join an active quiz
+- `commitAnswer()`: Submit answer hash (commit phase)
+- `revealAnswer()`: Reveal answers and calculate score
+- `distributeRewards()`: Distribute rewards to participants
+- `endQuiz()`: End a quiz (creator only)
+- `cancelQuiz()`: Cancel a quiz and refund participants
+
+**Deployed Contract:**
+
+- **Network**: Celo Sepolia Testnet
+- **Address**: `0xc9E6c6990BD99Af280641f659e6543ae9577409c`
+- **Explorer**: [View on Blockscout](https://celo-sepolia.blockscout.com/address/0xc9E6c6990BD99Af280641f659e6543ae9577409c)
+
+### Security Features
+
+- **Commit-Reveal Pattern**: Prevents cheating by hiding answers until quiz ends
+- **Access Control**: Only quiz creators can end or cancel their quizzes
+- **Pausable**: Contract can be paused by owner in case of emergencies
+- **Reentrancy Protection**: Protected against reentrancy attacks
+
+---
+
+## 🔑 Environment Variables
+
+### Frontend (`apps/web/.env.local`)
+
+**Required Variables:**
+
+```env
+# Smart Contract Configuration
+NEXT_PUBLIC_QUIZ_MANAGER_ADDRESS=0xc9E6c6990BD99Af280641f659e6543ae9577409c
+NEXT_PUBLIC_CHAIN_ID=11142220
+NEXT_PUBLIC_NETWORK_NAME=Celo Sepolia
+NEXT_PUBLIC_EXPLORER_URL=https://celo-sepolia.blockscout.com
+
+# IPFS Configuration (Required for quiz creation)
+NEXT_PUBLIC_WEB3_STORAGE_TOKEN=your_web3_storage_token
+# OR use Pinata:
+# NEXT_PUBLIC_PINATA_JWT_TOKEN=your_pinata_jwt_token
+NEXT_PUBLIC_IPFS_GATEWAY=https://ipfs.io/ipfs/
+```
+
+**Optional Variables:**
+
+```env
+# WalletConnect (Recommended)
+NEXT_PUBLIC_WC_PROJECT_ID=your_walletconnect_project_id
+
+# App Configuration
+NEXT_PUBLIC_APP_NAME=Scholaric
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_ENV=development
+```
+
+### Smart Contracts (`apps/contracts/.env`)
+
+```env
+# Private Key (Required for deployment)
+PRIVATE_KEY=your_private_key_here
+
+# Block Explorer API (Optional - for contract verification)
+CELOSCAN_API_KEY=your_celoscan_api_key
+```
+
+### Getting API Keys
+
+1. **Web3.Storage Token**:
+   - Visit [web3.storage](https://web3.storage/)
+   - Sign up for a free account
+   - Create an API token
+   - Copy and paste into `NEXT_PUBLIC_WEB3_STORAGE_TOKEN`
+
+2. **WalletConnect Project ID**:
+   - Visit [cloud.walletconnect.com](https://cloud.walletconnect.com/)
+   - Create a new project
+   - Copy the Project ID
+   - Paste into `NEXT_PUBLIC_WC_PROJECT_ID`
+
+---
+
+## 🚀 Deployment
+
+### Frontend Deployment (Vercel)
+
+1. **Push code to GitHub**
+
+   ```bash
+   git push origin main
+   ```
+
+2. **Import to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "Add New Project"
+   - Import your GitHub repository
+   - Set **Root Directory** to `apps/web`
+   - Add all environment variables
+   - Click "Deploy"
+
+3. **Configure Settings**
+   - Framework: Next.js (auto-detected)
+   - Build Command: `pnpm build`
+   - Install Command: `pnpm install`
+
+### Smart Contract Deployment
+
+1. **Deploy to Celo Sepolia Testnet**
+
+   ```bash
+   cd apps/contracts
+   pnpm deploy:sepolia
+   ```
+
+2. **Verify Contract** (optional)
+
+   ```bash
+   pnpm verify --network sepolia
+   ```
+
+3. **Update Frontend**
+   - Update `NEXT_PUBLIC_QUIZ_MANAGER_ADDRESS` with the new contract address
+
+---
+
+## 🧪 Testing
+
+### Frontend
+
+```bash
+# Run linting
+pnpm lint
+
+# Type checking
+pnpm type-check
+```
+
+### Smart Contracts
+
+```bash
+cd apps/contracts
+
+# Run all tests
+pnpm test
+
+# Run tests with coverage
+pnpm test --coverage
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Code Style
+
+- Follow TypeScript best practices
+- Use ESLint and Prettier for code formatting
+- Write meaningful commit messages
+- Add tests for new features
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Celo Foundation** for the blockchain infrastructure
+- **Celo Africa DAO** for hosting the hackathon
+- **MiniPay** for seamless mobile wallet integration
+- **IPFS** for decentralized storage
+- All open-source contributors whose libraries made this project possible
+
+---
+
+## 📞 Support
+
+For questions, issues, or contributions:
+
+- **GitHub Issues**: [Create an issue](https://github.com/adamstosho/Scholaric/issues)
+- **Email**: omoridoh111@gmail.com
+
+---
+
+## 🎯 Hackathon Information
+
+**Event**: Celo MiniPay Hackathon  
+**Category**: Educational Games  
+**Host**: Celo Africa DAO  
+**Prize**: Top 6 Projects - $500 each | First 30 Valid Submissions - $100 each
+
+---
+
+**Built with ❤️ for the Celo ecosystem**
+

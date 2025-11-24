@@ -241,7 +241,7 @@ export default function Home() {
                 <span className="text-primary font-medium">Features</span>
               </Badge>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-                Why Choose CeloScholar?
+                Why Choose Scholaric?
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed px-4">
                 Experience the next generation of educational platforms with blockchain-powered incentives and transparent learning rewards
@@ -374,7 +374,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-xl sm:text-2xl font-semibold">Connect Wallet</h3>
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
-                    Connect your MetaMask, WalletConnect, or MiniPay wallet to get started on CeloScholar instantly.
+                    Connect your MetaMask, WalletConnect, or MiniPay wallet to get started on Scholaric instantly.
                   </p>
                 </div>
               </div>
@@ -442,7 +442,7 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed italic">
-                    "CeloScholar has revolutionized how I learn. Earning cUSD while studying is absolutely incredible!"
+                    "Scholaric has revolutionized how I learn. Earning cUSD while studying is absolutely incredible!"
                   </p>
                   <div className="flex items-center gap-3 pt-4 border-t border-border">
                     <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center font-semibold text-primary text-base sm:text-lg">
@@ -522,7 +522,7 @@ export default function Home() {
                 Ready to Start Learning?
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto px-4">
-                Join CeloScholar today and be part of the decentralized education revolution where your knowledge is worth real money
+                Join Scholaric today and be part of the decentralized education revolution where your knowledge is worth real money
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 {isConnected ? (
