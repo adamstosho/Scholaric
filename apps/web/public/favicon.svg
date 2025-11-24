@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bookGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#35D07F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A8A4E;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="coinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#bookGradient)" stroke="#1A8A4E" stroke-width="2"/>
+  
+  <!-- Book -->
+  <path d="M 18 20 L 18 44 L 32 48 L 46 44 L 46 20 L 32 16 Z" fill="#FFFFFF" opacity="0.95"/>
+  <path d="M 32 16 L 32 48" stroke="#35D07F" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Book pages/lines -->
+  <line x1="22" y1="24" x2="28" y2="24" stroke="#35D07F" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="22" y1="28" x2="28" y2="28" stroke="#35D07F" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="22" y1="32" x2="28" y2="32" stroke="#35D07F" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Coin/Dollar symbol on book -->
+  <circle cx="38" cy="30" r="8" fill="url(#coinGradient)" stroke="#FFA500" stroke-width="1.5"/>
+  <text x="38" y="35" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">$</text>
+  
+  <!-- Sparkle/star effect -->
+  <path d="M 50 18 L 51 20 L 53 20 L 51.5 21.5 L 52.5 23.5 L 50 22 L 47.5 23.5 L 48.5 21.5 L 47 20 L 49 20 Z" fill="#FFD700" opacity="0.9"/>
+</svg>
+

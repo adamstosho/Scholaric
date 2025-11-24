@@ -1,0 +1,23 @@
+{
+  "name": "Scholaric - Learn & Earn with cUSD",
+  "short_name": "Scholaric",
+  "description": "Create educational quizzes, fund prize pools, and earn cryptocurrency rewards on the Celo blockchain",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#35D07F",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
+
