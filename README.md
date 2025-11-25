@@ -34,7 +34,7 @@ The platform uses smart contracts on the Celo blockchain to ensure transparent, 
 
 ---
 
-##CHECK OUT THE APP DEMO HERE
+##CHECK OUT THE APP DEMO HERE (Kindly click on the below image to see the video)
 [![CheckOutTheVideosHere](/public/111.png)](https://youtu.be/9X8sPOnXlBA)
 
 ## 🔍 Problem Statement
@@ -170,7 +170,7 @@ Before you begin, ensure you have the following installed:
 - **Crypto Wallet**: MetaMask, WalletConnect, or MiniPay
 
 
-##CHECK OUT THE APP DEMO HERE
+##CHECK OUT THE APP DEMO HERE (Kindly click on the below image to see the video)
 [![CheckOutTheVideosHere](/public/111.png)](https://youtu.be/9X8sPOnXlBA)
 
 
