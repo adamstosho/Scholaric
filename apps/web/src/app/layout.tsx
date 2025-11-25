@@ -11,22 +11,16 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Scholaric - Learn & Earn with cUSD',
-  description: 'Create educational quizzes, fund prize pools, and earn cryptocurrency rewards on the Celo blockchain.',
+  title: 'Scholaric - Learn & Earn with cUSD Rewards',
+  description: 'Create educational quizzes, fund prize pools, and earn cryptocurrency rewards on the Celo blockchain. Join the decentralized learning revolution where knowledge pays.',
   generator: 'v0.app',
-  keywords: ['Celo', 'blockchain', 'education', 'quiz', 'cUSD', 'earn', 'learn'],
+  keywords: ['Celo', 'blockchain', 'education', 'quiz', 'cUSD', 'earn', 'learn', 'learn-to-earn', 'MiniPay'],
   authors: [{ name: 'Scholaric' }],
-  icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/icon.svg', type: 'image/svg+xml', sizes: 'any' },
-    ],
-    apple: [
-      { url: '/apple-icon.svg', type: 'image/svg+xml' },
-    ],
+  openGraph: {
+    title: 'Scholaric - Learn & Earn with cUSD Rewards',
+    description: 'Create educational quizzes, fund prize pools, and earn cryptocurrency rewards on the Celo blockchain.',
+    type: 'website',
   },
-  manifest: '/manifest.json',
-  themeColor: '#35D07F',
 }
 
 export default function RootLayout({

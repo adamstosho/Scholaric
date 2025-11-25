@@ -59,6 +59,11 @@ Scholaric solves these problems by:
 
 ---
 
+## Snapshot of the LANDING PAGE
+
+()
+
+
 ## ✨ Key Features
 
 ### For Learners
