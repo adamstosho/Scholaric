@@ -156,9 +156,7 @@ Scholaric solves these problems by:
 
 ---
 
-## CHECK ALSO...
 
-![](/public/User-dashboard.png)
 
 ## 🚀 Getting Started
 
@@ -173,7 +171,7 @@ Before you begin, ensure you have the following installed:
 
 
 ##CHECK OUT THE APP DEMO HERE
-[![CheckOutTheVideosHere](https://youtu.be/9X8sPOnXlBA)](https://youtu.be/9X8sPOnXlBA)
+[![CheckOutTheVideosHere](/public/111.png)](https://youtu.be/9X8sPOnXlBA)
 
 
 ### Installation
