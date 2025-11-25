@@ -34,6 +34,9 @@ The platform uses smart contracts on the Celo blockchain to ensure transparent, 
 
 ---
 
+##CHECK OUT THE APP DEMO HERE
+[![CheckOutTheVideosHere](https://youtu.be/9X8sPOnXlBA)](https://youtu.be/9X8sPOnXlBA)
+
 ## 🔍 Problem Statement
 
 Traditional education platforms face several challenges:
@@ -61,8 +64,7 @@ Scholaric solves these problems by:
 
 ## Snapshot of the LANDING PAGE
 
-()
-
+![Landing Page](/public/screencapture-scholaric-web-vercel-app-2025-11-25-15_14_02.png)
 
 ## ✨ Key Features
 
@@ -82,6 +84,14 @@ Scholaric solves these problems by:
 3. **Manage Quizzes**: Set quiz duration, maximum participants, and start times
 4. **View Analytics**: Track quiz participation and performance metrics
 
+## SEE THE DASHBOARD HERE...
+
+![User Dashboard](/public/User-dashboard.png)
+
+
+## ALSO SEE THE CATALOGUE 
+![Catalogue Page](/public/screencapture-scholaric-web-vercel-app-catalogue-2025-11-25-15_15_37.png)
+
 ### Platform Features
 
 1. **Secure Commit-Reveal**: Answers are committed as hashes first, then revealed after the quiz ends, preventing cheating
@@ -92,6 +102,19 @@ Scholaric solves these problems by:
 6. **Real-Time Updates**: Live updates on quiz status and participant counts
 
 ---
+
+## DO YOU KNOW YOU CAN ALSO FILTER THE QUIZZES HERE FOR BEST UX... 
+
+![User Filtering](/public/catalogue-filtering.png)
+
+
+## THE APP LEADERBOARD
+![Leaderboard Page](/public/screencapture-scholaric-web-vercel-app-leaderboard-2025-11-25-15_21_11.png)
+
+
+## REWARD PAGE
+![Reward Page](/public/screencapture-scholaric-web-vercel-app-rewards-2025-11-25-15_19_10.png)
+
 
 ## 🛠️ Tech Stack
 
@@ -133,6 +156,10 @@ Scholaric solves these problems by:
 
 ---
 
+## CHECK ALSO...
+
+![](/public/User-dashboard.png)
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -143,6 +170,11 @@ Before you begin, ensure you have the following installed:
 - **pnpm**: Version 8.0.0 or higher
 - **Git**: For version control
 - **Crypto Wallet**: MetaMask, WalletConnect, or MiniPay
+
+
+##CHECK OUT THE APP DEMO HERE
+[![CheckOutTheVideosHere](https://youtu.be/9X8sPOnXlBA)](https://youtu.be/9X8sPOnXlBA)
+
 
 ### Installation
 
