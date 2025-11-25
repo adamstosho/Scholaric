@@ -35,7 +35,7 @@ The platform uses smart contracts on the Celo blockchain to ensure transparent, 
 ---
 
 ##CHECK OUT THE APP DEMO HERE
-[![CheckOutTheVideosHere](https://youtu.be/9X8sPOnXlBA)](https://youtu.be/9X8sPOnXlBA)
+[![CheckOutTheVideosHere](/public/111.png)](https://youtu.be/9X8sPOnXlBA)
 
 ## 🔍 Problem Statement
 
