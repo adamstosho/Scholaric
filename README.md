@@ -566,13 +566,7 @@ For questions, issues, or contributions:
 
 ---
 
-## 🎯 Hackathon Information
-
-**Event**: Celo MiniPay Hackathon  
-**Category**: Educational Games  
-**Host**: Celo Africa DAO  
-**Prize**: Top 6 Projects - $500 each | First 30 Valid Submissions - $100 each
-
+## 🎯 BUILT FOR CELO MINIPAY HACKATHON 
 ---
 
 **Built with ❤️ for the Celo ecosystem**
