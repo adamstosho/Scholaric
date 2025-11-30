@@ -104,3 +104,7 @@ Thumbs.db
 
 # TypeScript build info
 *.tsbuildinfo
+
+# ngrok
+.ngrok/
+ngrok.log

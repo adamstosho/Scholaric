@@ -1,0 +1,9 @@
+version: "2"
+authtoken: 36CvUohyEV4Qoa3iSBkdhBPpVfR_4jk3kWwMpEpdgswDJ5EpG
+tunnels:
+  minipay:
+    proto: http
+    addr: 3000
+    bind_tls: true
+    inspect: false
+

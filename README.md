@@ -2,6 +2,16 @@
 
 **Learn & Earn with Blockchain-Powered Education**
 
+## ✅ **TESTED AND VERIFIED ON MINIPAY**
+
+**This application has been fully tested and verified to work seamlessly with MiniPay!** The app has been tested using the MiniPay Mini App Test tool with ngrok tunneling, ensuring complete compatibility with MiniPay's mobile wallet environment. All features including wallet connection, quiz creation, participation, and cUSD transactions have been verified to work perfectly on MiniPay.
+
+---
+
+## Testing Page on Minipay app 
+![Testing_Page1](/apps/web/public/test_scholaric.jpeg)
+![Testing_Page1](/apps/web/public/test_scholaric_2.jpeg)
+
 Scholaric is a decentralized educational platform built on the Celo blockchain that rewards learners with cUSD (Celo Dollars) for answering quiz questions correctly. Create educational quizzes, fund prize pools, and earn real cryptocurrency rewards while learning.
 
 Built for the **Celo MiniPay Hackathon** - Educational Games category.
@@ -10,6 +20,7 @@ Built for the **Celo MiniPay Hackathon** - Educational Games category.
 
 ## 📖 Table of Contents
 
+- [MiniPay Testing](#-tested-and-verified-on-minipay)
 - [Introduction](#introduction)
 - [Problem Statement](#problem-statement)
 - [Solution](#solution)
@@ -97,7 +108,7 @@ Scholaric solves these problems by:
 1. **Secure Commit-Reveal**: Answers are committed as hashes first, then revealed after the quiz ends, preventing cheating
 2. **Proportional Rewards**: Rewards are distributed proportionally based on scores
 3. **IPFS Storage**: Quiz metadata stored on decentralized IPFS network
-4. **MiniPay Integration**: Seamless wallet connection with MiniPay support
+4. **MiniPay Integration**: ✅ **Fully tested and verified** - Seamless wallet connection with MiniPay support, tested using MiniPay Mini App Test tool
 5. **Mobile-First Design**: Responsive design optimized for mobile devices
 6. **Real-Time Updates**: Live updates on quiz status and participant counts
 
@@ -567,6 +578,11 @@ For questions, issues, or contributions:
 ---
 
 ## 🎯 BUILT FOR CELO MINIPAY HACKATHON 
+
+**✅ TESTED AND VERIFIED ON MINIPAY**
+
+This application has been thoroughly tested using the MiniPay Mini App Test tool with ngrok tunneling. All core functionalities including wallet connection, quiz operations, and cUSD transactions have been verified to work seamlessly on MiniPay.
+
 ---
 
 **Built with ❤️ for the Celo ecosystem**
