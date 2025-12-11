@@ -13,8 +13,8 @@ import { useSafeAccount } from '@/hooks/use-safe-account'
 import { formatEther, decodeErrorResult, bytesToHex, hexToBytes, keccak256, concat } from 'viem'
 import { fetchQuizMetadata } from '@/lib/ipfs'
 import { getIpfsHash } from '@/lib/ipfs-storage'
-import { usePublicClient, useConnect } from 'wagmi'
-import { QUIZ_MANAGER_ADDRESS } from '@/lib/contracts/addresses'
+import { usePublicClient, useConnect, useChainId } from 'wagmi'
+import { getContractAddress } from '@/lib/contracts/addresses'
 import quizManagerAbi from '@/lib/contracts/quiz-manager-abi.json'
 import { useToast } from '@/hooks/use-toast'
 import {
@@ -31,6 +31,8 @@ export default function QuizResultsPage({ params }: { params: { id: string } }) 
   const { data: quizData, isLoading: isLoadingQuiz } = useGetQuiz(quizId)
   const { address, isConnected } = useSafeAccount()
   const publicClient = usePublicClient()
+  const chainId = useChainId()
+  const contractAddress = getContractAddress(chainId)
   const { connect, connectors, isPending: isConnecting } = useConnect()
   const { data: participantData, isLoading: isLoadingParticipant } = useGetParticipantData(quizId, address as `0x${string}` | undefined)
   const { data: allParticipants } = useGetParticipants(quizId)
@@ -67,7 +69,7 @@ export default function QuizResultsPage({ params }: { params: { id: string } }) 
       if (!isRevealConfirmed || !address || !publicClient) return
       try {
         const pData = await publicClient.readContract({
-          address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+          address: contractAddress,
           abi: quizManagerAbi,
           functionName: 'getParticipantData',
           args: [quizId, address as `0x${string}`],
@@ -871,7 +873,7 @@ export default function QuizResultsPage({ params }: { params: { id: string } }) 
           for (const participantAddress of allParticipants) {
             try {
               const pData = await publicClient.readContract({
-                address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+                address: contractAddress,
                 abi: quizManagerAbi,
                 functionName: 'getParticipantData',
                 args: [quizId, participantAddress as `0x${string}`],
@@ -1003,7 +1005,7 @@ export default function QuizResultsPage({ params }: { params: { id: string } }) 
       try {
         if (publicClient) {
           const hash = await publicClient.readContract({
-            address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+            address: contractAddress,
             abi: quizManagerAbi,
             functionName: 'correctAnswersHash',
             args: [quizId],
@@ -1065,7 +1067,7 @@ export default function QuizResultsPage({ params }: { params: { id: string } }) 
       try {
         if (address && publicClient) {
           const commitment = await publicClient.readContract({
-            address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+            address: contractAddress,
             abi: quizManagerAbi,
             functionName: 'answerCommitments',
             args: [quizId, address as `0x${string}`],
@@ -1427,7 +1429,7 @@ export default function QuizResultsPage({ params }: { params: { id: string } }) 
         
         // Use contractScore for the contract (byte-by-byte), but realScore for display
         await publicClient.simulateContract({
-          address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+          address: contractAddress,
           abi: quizManagerAbi,
           functionName: 'revealAnswer',
           args: [

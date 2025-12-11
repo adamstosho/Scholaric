@@ -1,18 +1,27 @@
 "use client";
 
-import { useReadContract, useWriteContract, useWaitForTransactionReceipt, useAccount } from "wagmi";
-import { useEffect } from "react";
+import { useReadContract, useWriteContract, useWaitForTransactionReceipt, useAccount, useChainId } from "wagmi";
+import { useEffect, useMemo } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { QUIZ_MANAGER_ADDRESS } from "@/lib/contracts/addresses";
+import { getContractAddress, QUIZ_MANAGER_ADDRESS } from "@/lib/contracts/addresses";
 import quizManagerAbi from "@/lib/contracts/quiz-manager-abi.json";
 import { parseEther, keccak256, concat, stringToBytes, toHex, isHex, bytesToHex } from "viem";
+
+/**
+ * Hook to get the contract address for the currently connected chain
+ */
+function useContractAddress() {
+  const chainId = useChainId();
+  return useMemo(() => getContractAddress(chainId), [chainId]);
+}
 
 /**
  * Hook to get all quiz IDs
  */
 export function useGetAllQuizIds() {
+  const contractAddress = useContractAddress();
   return useReadContract({
-    address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+    address: contractAddress,
     abi: quizManagerAbi,
     functionName: "getAllQuizIds",
   });
@@ -22,8 +31,9 @@ export function useGetAllQuizIds() {
  * Hook to get quiz details
  */
 export function useGetQuiz(quizId: bigint | undefined) {
+  const contractAddress = useContractAddress();
   return useReadContract({
-    address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+    address: contractAddress,
     abi: quizManagerAbi,
     functionName: "getQuiz",
     args: quizId !== undefined ? [quizId] : undefined,
@@ -37,8 +47,9 @@ export function useGetQuiz(quizId: bigint | undefined) {
  * Hook to get participants for a quiz
  */
 export function useGetParticipants(quizId: bigint | undefined) {
+  const contractAddress = useContractAddress();
   return useReadContract({
-    address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+    address: contractAddress,
     abi: quizManagerAbi,
     functionName: "getParticipants",
     args: quizId !== undefined ? [quizId] : undefined,
@@ -52,8 +63,9 @@ export function useGetParticipants(quizId: bigint | undefined) {
  * Hook to get participant data
  */
 export function useGetParticipantData(quizId: bigint | undefined, participantAddress: `0x${string}` | undefined) {
+  const contractAddress = useContractAddress();
   return useReadContract({
-    address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+    address: contractAddress,
     abi: quizManagerAbi,
     functionName: "getParticipantData",
     args: quizId !== undefined && participantAddress ? [quizId, participantAddress] : undefined,
@@ -67,6 +79,7 @@ export function useGetParticipantData(quizId: bigint | undefined, participantAdd
  * Hook to create a quiz
  */
 export function useCreateQuiz() {
+  const contractAddress = useContractAddress();
   const { writeContract, data: hash, isPending, error, reset } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
@@ -85,7 +98,7 @@ export function useCreateQuiz() {
       
       // writeContract can throw synchronously for validation errors
       writeContract({
-        address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+        address: contractAddress,
         abi: quizManagerAbi,
         functionName: "createQuiz",
         args: [metadataHash, maxParticipants, startTime, duration, correctAnswersHash],
@@ -114,6 +127,7 @@ export function useCreateQuiz() {
  * Hook to fund a quiz
  */
 export function useFundQuiz() {
+  const contractAddress = useContractAddress();
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
@@ -122,7 +136,7 @@ export function useFundQuiz() {
   const fundQuiz = async (quizId: bigint, amount: string) => {
     const amountWei = parseEther(amount);
     writeContract({
-      address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+      address: contractAddress,
       abi: quizManagerAbi,
       functionName: "fundQuiz",
       args: [quizId],
@@ -144,6 +158,7 @@ export function useFundQuiz() {
  * Hook to join a quiz
  */
 export function useJoinQuiz() {
+  const contractAddress = useContractAddress();
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
@@ -151,7 +166,7 @@ export function useJoinQuiz() {
 
   const joinQuiz = async (quizId: bigint) => {
     writeContract({
-      address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+      address: contractAddress,
       abi: quizManagerAbi,
       functionName: "joinQuiz",
       args: [quizId],
@@ -172,6 +187,7 @@ export function useJoinQuiz() {
  * Hook to commit an answer
  */
 export function useCommitAnswer() {
+  const contractAddress = useContractAddress();
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
@@ -179,7 +195,7 @@ export function useCommitAnswer() {
 
   const commitAnswer = async (quizId: bigint, commitment: `0x${string}`) => {
     writeContract({
-      address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+      address: contractAddress,
       abi: quizManagerAbi,
       functionName: "commitAnswer",
       args: [quizId, commitment],
@@ -200,6 +216,7 @@ export function useCommitAnswer() {
  * Hook to reveal an answer
  */
 export function useRevealAnswer() {
+  const contractAddress = useContractAddress();
   const { address, isConnected } = useAccount()
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   // Enable receipt waiting so the app can react on confirmation (invalidate cache, persist on-chain state)
@@ -395,7 +412,7 @@ export function useRevealAnswer() {
         // but we've already checked above. This call will trigger the wallet prompt.
         // NOTE: writeContract doesn't return a value - it triggers the wallet prompt asynchronously
         writeContract({
-          address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+          address: contractAddress,
           abi: quizManagerAbi,
           functionName: 'revealAnswer',
           args: [
@@ -457,6 +474,7 @@ export function useRevealAnswer() {
  * Hook to end a quiz
  */
 export function useEndQuiz() {
+  const contractAddress = useContractAddress();
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
@@ -464,7 +482,7 @@ export function useEndQuiz() {
 
   const endQuiz = async (quizId: bigint) => {
     writeContract({
-      address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+      address: contractAddress,
       abi: quizManagerAbi,
       functionName: "endQuiz",
       args: [quizId],
@@ -485,6 +503,7 @@ export function useEndQuiz() {
  * Hook to distribute rewards
  */
 export function useDistributeRewards() {
+  const contractAddress = useContractAddress();
   const { writeContract, data: hash, isPending, error } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
     hash,
@@ -494,7 +513,7 @@ export function useDistributeRewards() {
 
   const distributeRewards = async (quizId: bigint) => {
     writeContract({
-      address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+      address: contractAddress,
       abi: quizManagerAbi,
       functionName: "distributeRewards",
       args: [quizId],
@@ -518,8 +537,9 @@ export function useDistributeRewards() {
  * Hook to fetch reward data for a quiz
  */
 export function useGetRewards(quizId: bigint | undefined) {
+  const contractAddress = useContractAddress();
   return useReadContract({
-    address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+    address: contractAddress,
     abi: quizManagerAbi,
     functionName: "getRewards",
     args: quizId !== undefined ? [quizId] : undefined,
@@ -533,8 +553,9 @@ export function useGetRewards(quizId: bigint | undefined) {
  * Hook to fetch participant-specific reward data
  */
 export function useGetParticipantReward(quizId: bigint | undefined, participantAddress: `0x${string}` | undefined) {
+  const contractAddress = useContractAddress();
   return useReadContract({
-    address: QUIZ_MANAGER_ADDRESS as `0x${string}`,
+    address: contractAddress,
     abi: quizManagerAbi,
     functionName: "getParticipantData",
     args: quizId !== undefined && participantAddress ? [quizId, participantAddress] : undefined,
