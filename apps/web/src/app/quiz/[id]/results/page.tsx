@@ -13,8 +13,8 @@ import { useSafeAccount } from '@/hooks/use-safe-account'
 import { formatEther, decodeErrorResult, bytesToHex, hexToBytes, keccak256, concat } from 'viem'
 import { fetchQuizMetadata } from '@/lib/ipfs'
 import { getIpfsHash } from '@/lib/ipfs-storage'
-import { usePublicClient, useConnect, useChainId } from 'wagmi'
-import { getContractAddress } from '@/lib/contracts/addresses'
+import { usePublicClient, useConnect } from 'wagmi'
+import { QUIZ_MANAGER_ADDRESS } from '@/lib/contracts/addresses'
 import quizManagerAbi from '@/lib/contracts/quiz-manager-abi.json'
 import { useToast } from '@/hooks/use-toast'
 import {
@@ -31,8 +31,7 @@ export default function QuizResultsPage({ params }: { params: { id: string } }) 
   const { data: quizData, isLoading: isLoadingQuiz } = useGetQuiz(quizId)
   const { address, isConnected } = useSafeAccount()
   const publicClient = usePublicClient()
-  const chainId = useChainId()
-  const contractAddress = getContractAddress(chainId)
+  const contractAddress = QUIZ_MANAGER_ADDRESS as `0x${string}`
   const { connect, connectors, isPending: isConnecting } = useConnect()
   const { data: participantData, isLoading: isLoadingParticipant } = useGetParticipantData(quizId, address as `0x${string}` | undefined)
   const { data: allParticipants } = useGetParticipants(quizId)

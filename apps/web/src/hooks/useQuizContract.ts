@@ -1,18 +1,17 @@
 "use client";
 
-import { useReadContract, useWriteContract, useWaitForTransactionReceipt, useAccount, useChainId } from "wagmi";
-import { useEffect, useMemo } from "react";
+import { useReadContract, useWriteContract, useWaitForTransactionReceipt, useAccount } from "wagmi";
+import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { getContractAddress, QUIZ_MANAGER_ADDRESS } from "@/lib/contracts/addresses";
+import { QUIZ_MANAGER_ADDRESS } from "@/lib/contracts/addresses";
 import quizManagerAbi from "@/lib/contracts/quiz-manager-abi.json";
 import { parseEther, keccak256, concat, stringToBytes, toHex, isHex, bytesToHex } from "viem";
 
 /**
- * Hook to get the contract address for the currently connected chain
+ * Hook to get the contract address
  */
 function useContractAddress() {
-  const chainId = useChainId();
-  return useMemo(() => getContractAddress(chainId), [chainId]);
+  return QUIZ_MANAGER_ADDRESS as `0x${string}`;
 }
 
 /**
