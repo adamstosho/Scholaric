@@ -1,0 +1,10 @@
+{
+  "network": "Celo Mainnet",
+  "chainId": 42220,
+  "contractName": "QuizManager",
+  "contractAddress": "0x1469beF9638eE24Bdb39835fD3429D45F7833827",
+  "deployer": "0x1A0A85fd9E79562e85A0861c509E0c2239a6d0D5",
+  "timestamp": "2025-12-11T14:48:47.114Z",
+  "blockNumber": 53563768,
+  "explorer": "https://celoscan.io/address/0x1469beF9638eE24Bdb39835fD3429D45F7833827"
+}

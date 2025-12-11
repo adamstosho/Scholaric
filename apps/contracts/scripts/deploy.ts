@@ -18,25 +18,55 @@ async function main() {
   // Get network provider
   const provider = ethers.provider;
   const networkInfo = await provider.getNetwork();
+  const chainId = Number(networkInfo.chainId);
+  
+  // Determine network details
+  const networkNames: { [key: number]: string } = {
+    42220: "Celo Mainnet",
+    44787: "Celo Alfajores Testnet",
+    11142220: "Celo Sepolia Testnet",
+  };
+  
+  const explorerUrls: { [key: number]: string } = {
+    42220: "https://celoscan.io/address",
+    44787: "https://alfajores.celoscan.io/address",
+    11142220: "https://celo-sepolia.blockscout.com/address",
+  };
+  
+  const networkName = networkNames[chainId] || `Unknown Network (${chainId})`;
+  const explorerBaseUrl = explorerUrls[chainId] || `https://explorer.celo.org/address`;
+  const isMainnet = chainId === 42220;
   
   // Create wallet from private key
   const deployer = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
   
   console.log("=".repeat(60));
-  console.log("Deploying QuizManager to Celo Sepolia Testnet");
+  console.log(`Deploying QuizManager to ${networkName}`);
   console.log("=".repeat(60));
   console.log("Deployer address:", deployer.address);
   
   const balance = await provider.getBalance(deployer.address);
-  console.log("Deployer balance:", ethers.formatEther(balance), "CELO");
+  const balanceFormatted = ethers.formatEther(balance);
+  console.log("Deployer balance:", balanceFormatted, "CELO");
   
   if (balance === 0n) {
     console.log("\n⚠️  WARNING: Deployer has zero balance!");
-    console.log("Please get testnet CELO from: https://faucet.celo.org/");
+    if (isMainnet) {
+      console.log("Please fund your wallet with CELO for gas fees.");
+    } else {
+      console.log("Please get testnet CELO from: https://faucet.celo.org/");
+    }
     throw new Error("Insufficient balance for deployment");
   }
   
-  console.log("Network:", networkInfo.name, "(Chain ID:", Number(networkInfo.chainId) + ")");
+  // Check minimum balance for mainnet (estimate ~0.1 CELO should be enough)
+  const minBalance = isMainnet ? ethers.parseEther("0.1") : ethers.parseEther("0.01");
+  if (balance < minBalance) {
+    console.log(`\n⚠️  WARNING: Balance may be insufficient for deployment!`);
+    console.log(`Recommended minimum: ${ethers.formatEther(minBalance)} CELO`);
+  }
+  
+  console.log("Network:", networkName, "(Chain ID:", chainId + ")");
   console.log("=".repeat(60));
 
   // Deploy QuizManager
@@ -48,16 +78,16 @@ async function main() {
   const contractAddress = await quizManager.getAddress();
   console.log("✅ QuizManager deployed to:", contractAddress);
 
-  // Get deployment info (reuse networkInfo)
+  // Get deployment info
   const deploymentInfo = {
-    network: networkInfo.name,
-    chainId: Number(networkInfo.chainId),
+    network: networkName,
+    chainId: chainId,
     contractName: "QuizManager",
     contractAddress: contractAddress,
     deployer: deployer.address,
     timestamp: new Date().toISOString(),
     blockNumber: await provider.getBlockNumber(),
-    explorer: `https://celo-sepolia.blockscout.com/address/${contractAddress}`,
+    explorer: `${explorerBaseUrl}/${contractAddress}`,
   };
 
   // Save deployment info
@@ -66,9 +96,11 @@ async function main() {
     fs.mkdirSync(deploymentsDir, { recursive: true });
   }
 
+  // Create safe network name for filename
+  const networkNameSafe = networkName.toLowerCase().replace(/\s+/g, "-");
   const deploymentFile = path.join(
     deploymentsDir,
-    `deployment-${network.name}-${Date.now()}.json`
+    `deployment-${networkNameSafe}-${Date.now()}.json`
   );
   fs.writeFileSync(
     deploymentFile,
