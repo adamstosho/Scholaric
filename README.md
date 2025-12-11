@@ -393,9 +393,9 @@ The main smart contract that handles all quiz operations.
 
 **Deployed Contract:**
 
-- **Network**: Celo Sepolia Testnet
-- **Address**: `0xc9E6c6990BD99Af280641f659e6543ae9577409c`
-- **Explorer**: [View on Blockscout](https://celo-sepolia.blockscout.com/address/0xc9E6c6990BD99Af280641f659e6543ae9577409c)
+- **Network**: Celo Mainnet
+- **Address**: `0x1469beF9638eE24Bdb39835fD3429D45F7833827`
+- **Explorer**: [View on Celoscan](https://celoscan.io/address/0x1469beF9638eE24Bdb39835fD3429D45F7833827)
 
 ### Security Features
 
@@ -413,11 +413,11 @@ The main smart contract that handles all quiz operations.
 **Required Variables:**
 
 ```env
-# Smart Contract Configuration
-NEXT_PUBLIC_QUIZ_MANAGER_ADDRESS=0xc9E6c6990BD99Af280641f659e6543ae9577409c
-NEXT_PUBLIC_CHAIN_ID=11142220
-NEXT_PUBLIC_NETWORK_NAME=Celo Sepolia
-NEXT_PUBLIC_EXPLORER_URL=https://celo-sepolia.blockscout.com
+# Smart Contract Configuration (Celo Mainnet)
+NEXT_PUBLIC_QUIZ_MANAGER_ADDRESS=0x1469beF9638eE24Bdb39835fD3429D45F7833827
+NEXT_PUBLIC_CHAIN_ID=42220
+NEXT_PUBLIC_NETWORK_NAME=Celo Mainnet
+NEXT_PUBLIC_EXPLORER_URL=https://celoscan.io
 
 # IPFS Configuration (Required for quiz creation)
 NEXT_PUBLIC_WEB3_STORAGE_TOKEN=your_web3_storage_token
@@ -489,21 +489,24 @@ CELOSCAN_API_KEY=your_celoscan_api_key
 
 ### Smart Contract Deployment
 
-1. **Deploy to Celo Sepolia Testnet**
+1. **Deploy to Celo Mainnet**
 
    ```bash
    cd apps/contracts
-   pnpm deploy:sepolia
+   pnpm deploy:celo
    ```
 
 2. **Verify Contract** (optional)
 
    ```bash
-   pnpm verify --network sepolia
+   pnpm verify --network celo
    ```
 
 3. **Update Frontend**
-   - Update `NEXT_PUBLIC_QUIZ_MANAGER_ADDRESS` with the new contract address
+   - Update `NEXT_PUBLIC_QUIZ_MANAGER_ADDRESS` in `.env.local` with the new contract address
+   - Ensure `NEXT_PUBLIC_CHAIN_ID=42220` for mainnet
+
+**Note:** For testnet deployments, use `pnpm deploy:sepolia` or `pnpm deploy:alfajores`
 
 ---
 

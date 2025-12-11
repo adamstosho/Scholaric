@@ -7,6 +7,7 @@ import { celoSepolia } from "@/lib/chains/celo-sepolia";
 import { useEffect, useState, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { CHAIN_ID } from "@/lib/contracts/addresses";
 
 interface ConnectButtonProps {
   className?: string;
@@ -31,20 +32,21 @@ export function ConnectButton({ className, redirectToDashboard = false }: Connec
   }, []);
 
   useEffect(() => {
-    // Auto-switch to Celo network if connected to wrong network
+    // Auto-switch to configured Celo network if connected to wrong network
     // Only switch once per connection to avoid infinite loops
     if (
       isConnected && 
       chainId && 
       !isSwitching &&
       !hasSwitchedRef.current &&
-      chainId !== celo.id && 
-      chainId !== celoAlfajores.id &&
-      chainId !== celoSepolia.id
+      chainId !== CHAIN_ID // Check against configured chain ID
     ) {
       hasSwitchedRef.current = true;
-      // Try to switch to Celo Sepolia (testnet) as default
-      const targetChain = celoSepolia;
+      // Determine target chain based on configured CHAIN_ID
+      let targetChain = celo; // Default to mainnet
+      if (CHAIN_ID === celo.id) targetChain = celo;
+      else if (CHAIN_ID === celoAlfajores.id) targetChain = celoAlfajores;
+      else if (CHAIN_ID === celoSepolia.id) targetChain = celoSepolia;
       
       // Use setTimeout to avoid calling during render
       setTimeout(() => {

@@ -172,7 +172,8 @@ export default function CreateQuizPage() {
       } else if (errorMsg.includes('user rejected') || errorMsg.includes('denied') || errorMsg.includes('User rejected') || errorMsg.includes('User rejected the request')) {
         errorMessage = 'Transaction cancelled: You rejected the transaction in your wallet.'
       } else if (errorMsg.includes('Chain mismatch') || errorMsg.includes('chain') || errorMsg.includes('Unsupported chain')) {
-        errorMessage = 'Wrong network: Please switch to Celo Sepolia testnet (Chain ID: 11142220) in your wallet.'
+        const networkName = process.env.NEXT_PUBLIC_NETWORK_NAME || 'Celo Mainnet';
+        errorMessage = `Wrong network: Please switch to ${networkName} (Chain ID: ${CHAIN_ID}) in your wallet.`
       } else if (errorMsg.includes('connector') || errorMsg.includes('not connected') || errorMsg.includes('No connector')) {
         errorMessage = 'Wallet not connected: Please connect your wallet and try again.'
       } else if (errorMsg.includes('network') || errorMsg.includes('Network')) {
@@ -319,7 +320,8 @@ export default function CreateQuizPage() {
 
       // Check if on correct network
       if (chainId !== CHAIN_ID) {
-        throw new Error(`Wrong network. Please switch to Celo Sepolia (Chain ID: ${CHAIN_ID}) in your wallet. Current chain: ${chainId}`)
+        const networkName = process.env.NEXT_PUBLIC_NETWORK_NAME || 'Celo Mainnet';
+        throw new Error(`Wrong network. Please switch to ${networkName} (Chain ID: ${CHAIN_ID}) in your wallet. Current chain: ${chainId}`)
       }
 
       // Step 6: Call createQuiz contract function

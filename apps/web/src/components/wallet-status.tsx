@@ -14,7 +14,7 @@ interface WalletStatusProps {
 
 export function WalletStatus({ 
   address = '0x742d...f44e', 
-  network = 'Celo Sepolia',
+  network = process.env.NEXT_PUBLIC_NETWORK_NAME || 'Celo Mainnet',
   balance = '125.50',
   isConnected = true
 }: WalletStatusProps) {

@@ -9,6 +9,15 @@ import { WagmiProvider, createConfig, http, useConnect, fallback } from "wagmi";
 import { celo, celoAlfajores } from "wagmi/chains";
 import { celoSepolia } from "@/lib/chains/celo-sepolia";
 
+// Determine the default chain based on environment variable
+const defaultChainId = Number(process.env.NEXT_PUBLIC_CHAIN_ID) || 42220; // Default to Celo Mainnet
+const getInitialChain = () => {
+  if (defaultChainId === 42220) return celo;
+  if (defaultChainId === 44787) return celoAlfajores;
+  if (defaultChainId === 11142220) return celoSepolia;
+  return celo; // Default to mainnet
+};
+
 const connectors = connectorsForWallets(
   [
     {
@@ -42,11 +51,30 @@ const celoSepoliaTransport = fallback([
   }),
 ]);
 
+// Mainnet RPC with fallbacks for reliability
+const celoMainnetTransport = fallback([
+  http('https://forno.celo.org', {
+    retryCount: 3,
+    retryDelay: 1000,
+    timeout: 30000,
+  }),
+  http('https://rpc.ankr.com/celo', {
+    retryCount: 2,
+    retryDelay: 1000,
+    timeout: 30000,
+  }),
+  http('https://celo-rpc.publicnode.com', {
+    retryCount: 2,
+    retryDelay: 1000,
+    timeout: 30000,
+  }),
+]);
+
 const wagmiConfig = createConfig({
   chains: [celo, celoAlfajores, celoSepolia],
   connectors,
   transports: {
-    [celo.id]: http(),
+    [celo.id]: celoMainnetTransport,
     [celoAlfajores.id]: http(),
     [celoSepolia.id]: celoSepoliaTransport,
   },
@@ -95,7 +123,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
-          initialChain={celoSepolia}
+          initialChain={getInitialChain()}
           appInfo={{
             appName: "Scholaric",
             learnMoreUrl: "https://docs.celo.org",
