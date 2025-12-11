@@ -17,7 +17,7 @@ import { uploadQuizMetadata, type QuizMetadata } from '@/lib/ipfs'
 import { keccak256, stringToBytes, decodeEventLog } from 'viem'
 import { useToast } from '@/hooks/use-toast'
 import { useChainId, usePublicClient } from 'wagmi'
-import { CHAIN_ID, getContractAddress, getNetworkName } from '@/lib/contracts/addresses'
+import { CHAIN_ID } from '@/lib/contracts/addresses'
 import { storeIpfsHash } from '@/lib/ipfs-storage'
 import quizManagerAbi from '@/lib/contracts/quiz-manager-abi.json'
 
@@ -318,11 +318,10 @@ export default function CreateQuizPage() {
         throw new Error('Wallet not connected. Please connect your wallet and try again.')
       }
 
-      // Check if on a supported Celo network (mainnet or testnets)
-      const supportedChains = [42220, 44787, 11142220]; // Celo Mainnet, Alfajores, Sepolia
-      if (!supportedChains.includes(chainId)) {
-        const networkName = getNetworkName(chainId);
-        throw new Error(`Unsupported network. Please switch to Celo Mainnet (42220), Alfajores (44787), or Sepolia (11142220). Current chain: ${chainId} (${networkName})`)
+      // Check if on correct network
+      if (chainId !== CHAIN_ID) {
+        const networkName = process.env.NEXT_PUBLIC_NETWORK_NAME || 'Celo Mainnet';
+        throw new Error(`Wrong network. Please switch to ${networkName} (Chain ID: ${CHAIN_ID}) in your wallet. Current chain: ${chainId}`)
       }
 
       // Step 6: Call createQuiz contract function
