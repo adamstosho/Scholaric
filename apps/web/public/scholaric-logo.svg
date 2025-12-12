@@ -1,0 +1,120 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Static version of Scholaric logo (without animations) -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="1" />
+      <stop offset="100%" stop-color="#4F46E5" stop-opacity="1" />
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Main book shape -->
+  <g transform="translate(32, 32)">
+    {/* Book cover */}
+    <path
+      d="M -18 -12 L 18 -12 L 18 12 L -18 12 Z"
+      fill="url(#logoGradient)"
+      filter="url(#glow)"
+      opacity="0.95"
+    />
+
+    {/* Book pages */}
+    <path
+      d="M -16 -10 L 16 -10 L 16 10 L -16 10 Z"
+      fill="#FFFFFF"
+      opacity="0.9"
+    />
+
+    {/* Book binding */}
+    <rect
+      x="-18"
+      y="-12"
+      width="4"
+      height="24"
+      fill="#4338CA"
+      opacity="0.8"
+    />
+
+    {/* Text lines on pages */}
+    <g opacity="0.6">
+      <line
+        x1="-12"
+        y1="-6"
+        x2="12"
+        y2="-6"
+        stroke="#6366F1"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+      <line
+        x1="-12"
+        y1="0"
+        x2="12"
+        y2="0"
+        stroke="#6366F1"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+      <line
+        x1="-12"
+        y1="6"
+        x2="12"
+        y2="6"
+        stroke="#6366F1"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </g>
+
+    {/* Sparkle stars around the book */}
+    <g>
+      {/* Top sparkle */}
+      <g transform="translate(0, -20)">
+        <path
+          d="M 0 -4 L 1.5 0 L 0 4 L -1.5 0 Z M -4 0 L 0 -1.5 L 4 0 L 0 1.5 Z"
+          fill="#FCD34D"
+          opacity="0.9"
+        />
+      </g>
+
+      {/* Right sparkle */}
+      <g transform="translate(20, 0)">
+        <path
+          d="M 0 -3 L 1 0 L 0 3 L -1 0 Z M -3 0 L 0 -1 L 3 0 L 0 1 Z"
+          fill="#FCD34D"
+          opacity="0.7"
+        />
+      </g>
+
+      {/* Bottom sparkle */}
+      <g transform="translate(0, 20)">
+        <path
+          d="M 0 -3 L 1 0 L 0 3 L -1 0 Z M -3 0 L 0 -1 L 3 0 L 0 1 Z"
+          fill="#FCD34D"
+          opacity="0.6"
+        />
+      </g>
+    </g>
+
+    {/* Light rays effect */}
+    <g opacity="0.3">
+      <path
+        d="M 0 -24 L 2 -18 L -2 -18 Z"
+        fill="#6366F1"
+      />
+      <path
+        d="M 24 0 L 18 2 L 18 -2 Z"
+        fill="#6366F1"
+      />
+    </g>
+  </g>
+</svg>
+
