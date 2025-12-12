@@ -36,6 +36,8 @@
 - [User Guide](#-how-to-use)
 - [Technical Documentation](#-technical-documentation)
 - [Smart Contracts](#-smart-contracts)
+  - [Deployed Contracts](#-deployed-contracts-on-celo-mainnet)
+  - [QuizManager Contract](#quizmanager-contract)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
 - [Support](#-support)
@@ -566,6 +568,34 @@ Scholaric/
 
 ## 🔐 Smart Contracts
 
+### 📋 Deployed Contracts on Celo Mainnet
+
+All contracts deployed to Celo Mainnet (Chain ID: 42220) are listed below.
+
+| Contract Name | Address | Deployer | Block Number | Deployment Date | Explorer |
+|---------------|---------|----------|--------------|------------------|----------|
+| **QuizManager** | `0x1469beF9638eE24Bdb39835fD3429D45F7833827` | `0x1A0A85fd9E79562e85A0861c509E0c2239a6d0D5` | 53,563,768 | 2025-12-11 | [View on Celoscan](https://celoscan.io/address/0x1469beF9638eE24Bdb39835fD3429D45F7833827) |
+
+#### Contract Verification Status
+
+| Contract | Status | Verified |
+|----------|--------|----------|
+| QuizManager | ✅ Deployed | ✅ Verified |
+
+#### Related Token Contracts (Celo Mainnet)
+
+These are existing Celo mainnet token contracts used by the platform:
+
+| Token | Address | Symbol | Purpose |
+|-------|---------|--------|---------|
+| **cUSD** | `0x765de816845861e75a25fca122bb6898b8b1282a` | cUSD | Primary reward token |
+| **USDC** | `0xcebA9300f2b948710d2653dD7B07f33A8B32118C` | USDC | Alternative stablecoin |
+| **USDT** | `0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e` | USDT | Alternative stablecoin |
+
+> **Note**: Token contracts are existing Celo mainnet contracts and are not deployed by this project.
+
+---
+
 ### QuizManager Contract
 
 The main smart contract that handles all quiz operations on the Celo blockchain.
@@ -575,10 +605,13 @@ The main smart contract that handles all quiz operations on the Celo blockchain.
 | Property | Value |
 |----------|-------|
 | **Network** | Celo Mainnet |
+| **Chain ID** | 42220 |
 | **Address** | `0x1469beF9638eE24Bdb39835fD3429D45F7833827` |
 | **Explorer** | [View on Celoscan](https://celoscan.io/address/0x1469beF9638eE24Bdb39835fD3429D45F7833827) |
 | **Solidity Version** | 0.8.20 |
 | **License** | MIT |
+| **Deployment Block** | 53,563,768 |
+| **Deployment Date** | December 11, 2025 |
 
 #### Contract Functions
 
